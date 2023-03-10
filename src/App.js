@@ -9,7 +9,7 @@ function App() {
       primaryPostalCode: "Zip Code",
       country: {
         ID: "Abbreviation of Country",
-        englishName: "Name of Country",
+        countryName: "Name of Country",
       },
       administrativeArea: {
         ID: "Abbreviation of State/County/Area",
@@ -43,12 +43,12 @@ function App() {
   return (
     <div className="App">
      <h1>Kit's Cosmically Delicious Weather APP</h1>
-     <label htmlFor='user-name'>User Name: </label>
-      <input id='user-name' name='user-name' type='text' onChange={handleUserNameChange} />
+      <label htmlFor='user-name'>User Name: </label>
+        <input id='user-name' name='user-name' type='text' onChange={handleUserNameChange} />
 
-     <hr />
-     {/* component instantiation */}
-     <UserMap userInfo={userInfo} />
+      <hr />
+      {/* component instantiation */}
+      <UserMap userInfo={userInfo} />
     </div>
   );
 }
@@ -56,12 +56,13 @@ function App() {
 // have the mapping component here
 function UserMap(props) {
   return (
-    props.userInfo.map( list => 
+    props.userInfo.map(list => (
       <ul>
-        <li>EnglishName of the object: {list.userInfo.englishName}</li>
-        <li>ID of the AdministrativeArea: {list.userInfo.administrativeArea.ID}</li>
-        <li>ID of the Country: {list.userInfo.country.ID}</li>
+        <li>EnglishName of the object: {list.englishName}</li>
+        <li>ID of the AdministrativeArea: {list.administrativeArea.ID}</li>
+        <li>ID of the Country: {list.country.ID}</li>
       </ul>
+    )
     )
   )
 }
