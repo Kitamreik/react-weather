@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
+// import components to render
+import { UserMap } from "./components/shared/InputField";
 
 function App() {
   // start TO create a variable that is an array of objects
@@ -34,10 +36,20 @@ function App() {
   ];
   // end
 
+  // creating state and the setter function- This state will keep the value of the user input via input field. The value will represent a username. 
+  // Syntax: const [current state, state to change] = useState(initial value)
+  const [userName, setUserName] = useState("");
+
   // create the handler function
   const handleUserNameChange = (e) => {
-    console.group();
-    console.log(e.target.value); 
+    console.group("Log the Changes from the User Name");
+      console.log(e.target.value); 
+    console.groupEnd("ALL DONE")
+    console.log("Setting State from the UserName")
+    // set the state that will hold the user name to the value entered into the field
+    setUserName(e.target.value);
+    console.warn(setUserName(e.target.value));
+    console.groupEnd("END")
   }
   // end 
   return (
@@ -53,19 +65,8 @@ function App() {
   );
 }
 
-// have the mapping component here
-function UserMap(props) {
-  return (
-    props.userInfo.map(list => (
-      <ul>
-        <li>EnglishName of the object: {list.englishName}</li>
-        <li>ID of the AdministrativeArea: {list.administrativeArea.ID}</li>
-        <li>ID of the Country: {list.country.ID}</li>
-      </ul>
-    )
-    )
-  )
-}
+// have the mapping component MOVED to the components folder structure
+
 // end
 
 export default App;
